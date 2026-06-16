@@ -1,0 +1,727 @@
+:root {
+    /* Colors */
+    --bg-base: #0f172a;
+    --bg-surface: #1e293b;
+    --bg-surface-hover: #334155;
+    --border-color: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+
+    /* Box Model Visual Colors */
+    --color-margin: #fb923c;
+    --color-margin-bg: rgba(251, 146, 60, 0.15);
+    --color-border: #fbbf24;
+    --color-border-bg: rgba(251, 191, 36, 0.15);
+    --color-outline: #22d3ee;
+    --color-outline-bg: rgba(34, 211, 238, 0.15);
+    --color-padding: #4ade80;
+    --color-padding-bg: rgba(74, 222, 128, 0.15);
+    --color-content: #38bdf8;
+    --color-content-bg: rgba(56, 189, 248, 0.15);
+
+    --radius-lg: 16px;
+    --radius-md: 8px;
+    --radius-sm: 4px;
+
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.header {
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+
+.header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Layout Grid */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .container {
+        grid-template-columns: 450px 1fr;
+    }
+}
+
+/* Cards and Sections */
+.panel {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+/* Controls Styles */
+.control-group {
+    margin-bottom: 1.5rem;
+}
+
+.control-group-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-container {
+    display: grid;
+    grid-template-columns: 80px 1fr 45px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.slider-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: var(--radius-sm);
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #818cf8;
+}
+
+.value-display {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    text-align: right;
+    color: var(--text-primary);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+/* Sizing Mode Toggle */
+.sizing-toggle {
+    display: flex;
+    background: var(--bg-base);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: calc(var(--radius-md) - 2px);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.toggle-btn.active {
+    background: var(--primary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+}
+
+/* Live Preview Styles */
+.preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.visualizer-card {
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Grid lines in visualizer background */
+.visualizer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 20px 20px;
+    background-image:
+        linear-gradient(to right, rgba(51, 65, 85, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(51, 65, 85, 0.15) 1px, transparent 1px);
+    pointer-events: none;
+}
+
+/* Wrapper that holds styled element and siblings to show margin effect */
+.sibling-layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.sibling-box {
+    width: 80%;
+    max-width: 400px;
+    background-color: var(--bg-surface-hover);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    text-align: center;
+    border: 1px dashed var(--text-muted);
+    border-radius: var(--radius-md);
+    opacity: 0.6;
+    user-select: none;
+    transition: all var(--transition-normal);
+}
+
+/* Interactive Box */
+.demo-element-wrapper {
+    transition: all var(--transition-fast);
+}
+
+.demo-element {
+    background-color: var(--color-content-bg);
+    border-color: var(--color-border);
+    border-style: solid;
+    outline-style: solid;
+    outline-color: var(--color-outline);
+    transition: border-width var(--transition-fast), outline-width var(--transition-fast), margin var(--transition-fast), padding var(--transition-fast), width var(--transition-fast), height var(--transition-fast), box-sizing var(--transition-fast);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Inner Content display inside interactive box */
+.demo-content-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-content);
+    pointer-events: none;
+    padding: 4px;
+}
+
+/* Highlights & Visual Overlays on Live Box */
+.demo-element.highlight-margin {
+    box-shadow: 0 0 0 1000px var(--color-margin-bg);
+}
+
+/* DevTools Box Model Diagram */
+.diagram-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.box-model-diagram {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 500px;
+    min-width: 320px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    text-align: center;
+    user-select: none;
+}
+
+.diagram-layer {
+    border: 1px dashed transparent;
+    border-radius: var(--radius-md);
+    padding: 16px;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.diagram-label {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.diagram-val {
+    pointer-events: none;
+}
+
+.diagram-margin {
+    background-color: var(--color-margin-bg);
+    border-color: var(--color-margin);
+    color: var(--color-margin);
+}
+
+.diagram-outline {
+    background-color: var(--color-outline-bg);
+    border-color: var(--color-outline);
+    color: var(--color-outline);
+    margin: 8px;
+}
+
+.diagram-border {
+    background-color: var(--color-border-bg);
+    border-color: var(--color-border);
+    color: var(--color-border);
+    margin: 8px;
+}
+
+.diagram-padding {
+    background-color: var(--color-padding-bg);
+    border-color: var(--color-padding);
+    color: var(--color-padding);
+    margin: 8px;
+}
+
+.diagram-content {
+    background-color: var(--color-content-bg);
+    border-color: var(--color-content);
+    color: var(--color-content);
+    margin: 8px;
+    padding: 12px;
+    font-weight: bold;
+    border-style: solid;
+}
+
+/* Hover interaction highlights */
+.diagram-layer:hover,
+.diagram-layer.active-highlight {
+    box-shadow: 0 0 12px currentColor;
+    z-index: 10;
+}
+
+.diagram-margin.active-highlight {
+    box-shadow: 0 0 15px rgba(251, 146, 60, 0.4);
+}
+
+.diagram-outline.active-highlight {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+.diagram-border.active-highlight {
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+}
+
+.diagram-padding.active-highlight {
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.diagram-content.active-highlight {
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Calculation Card */
+.calc-panel {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.calc-row:last-child {
+    margin-bottom: 0;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.5rem;
+    font-weight: 600;
+}
+
+.calc-label {
+    color: var(--text-secondary);
+}
+
+.calc-val {
+    font-family: 'Fira Code', monospace;
+}
+
+.calc-val span {
+    font-weight: bold;
+}
+
+/* Code Block Container */
+.code-container {
+    position: relative;
+    background: #090d16;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-top: 1.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.code-block {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    white-space: pre;
+    line-height: 1.5;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.copy-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-surface-hover);
+    border-color: var(--primary);
+}
+
+/* Learn Content Cards */
+.learn-grid {
+    max-width: 1200px;
+    margin: 3rem auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .learn-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .learn-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.learn-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.learn-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+.learn-card.margin-card::before {
+    background-color: var(--color-margin);
+}
+
+.learn-card.border-card::before {
+    background-color: var(--color-border);
+}
+
+.learn-card.outline-card::before {
+    background-color: var(--color-outline);
+}
+
+.learn-card.padding-card::before {
+    background-color: var(--color-padding);
+}
+
+.learn-card.content-card::before {
+    background-color: var(--color-content);
+}
+
+.learn-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.learn-card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.learn-card-title span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.learn-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Explanation Box Sizing Section */
+.box-sizing-explanation {
+    max-width: 1200px;
+    margin: 3rem auto 1rem auto;
+}
+
+.explanation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .explanation-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.explanation-card {
+    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(30, 41, 59, 0.6) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+}
+
+.explanation-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.explanation-card h3 code {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: var(--primary);
+}
+
+.explanation-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.explanation-card ul {
+    list-style-position: inside;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+}
+
+.explanation-card li {
+    margin-bottom: 0.5rem;
+}
+
+.explanation-card strong {
+    color: var(--text-primary);
+}
+
+/* Visual Guide Top/Bottom labels in visualizer */
+.highlight-indicator {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(15, 23, 42, 0.8);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    z-index: 5;
+    transition: all var(--transition-fast);
+}
+
+.highlight-indicator span {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* Highlight classes */
+.highlight-margin-active {
+    outline: 2px dashed var(--color-margin) !important;
+    outline-offset: 10px;
+    background-color: var(--color-margin-bg) !important;
+}
+
+.highlight-border-active {
+    border-color: var(--color-border) !important;
+    box-shadow: 0 0 10px var(--color-border-bg);
+}
+
+.highlight-padding-active {
+    background-color: var(--color-padding-bg) !important;
+    box-shadow: inset 0 0 0 100px var(--color-padding-bg);
+}
+
+.highlight-outline-active {
+    outline-color: var(--color-outline) !important;
+    outline-style: dashed !important;
+    box-shadow: 0 0 15px var(--color-outline-bg);
+}
+
+.highlight-content-active {
+    background-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Info Badge */
+.badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    margin-left: auto;
+}
+
+.badge-content {
+    background-color: var(--color-content-bg);
+    color: var(--color-content);
+}
+
+.badge-padding {
+    background-color: var(--color-padding-bg);
+    color: var(--color-padding);
+}
+
+.badge-border {
+    background-color: var(--color-border-bg);
+    color: var(--color-border);
+}
+
+.badge-outline {
+    background-color: var(--color-outline-bg);
+    color: var(--color-outline);
+}
+
+.badge-margin {
+    background-color: var(--color-margin-bg);
+    color: var(--color-margin);
+}
+
+/* Footer */
+footer {
+    max-width: 1200px;
+    margin: 4rem auto 1rem auto;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
